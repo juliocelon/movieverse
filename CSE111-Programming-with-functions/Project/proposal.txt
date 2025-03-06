@@ -1,0 +1,57 @@
+CSE 111 Proposal for a Student Chosen Program
+
+    (This is a proposal. All proposals are written with our best
+    knowledge at the beginning of a project. As we progress from the
+    beginning to the end of a project, we gain more knowledge, and we
+    change some of our proposed ideas. This is part of completing any
+    project and is fine.  However, we still must write a proposal so
+    that our teachers or supervisors know what we intend to do. Please
+    answer each of the following questions to the best of your
+    knowledge.)
+
+1. What is the title of your program?
+
+Mynd Tracker
+
+2. What real-world problem will your program address or help to solve?
+
+Mynd Tracker is a user-friendly program with a simple GUI that helps 
+users create, and update valuable knowledge in a text file. 
+
+It serves as a digital learning journal, allowing users to capture 
+insights, lessons, and key takeaways effortlessly. 
+
+3. What will you learn from developing this program?
+
+I will learn to design and implement a GUI in Python while gaining
+practical experience in efficiently creating, updating, and managing
+ data in text files.
+
+4. What Python modules will your program use?
+
+I think the program will use the following Python modules: datetime, 
+tkinter or kivy and pytest
+
+5. List the names of functions you will need?
+
+save_file
+read_file
+update_file
+get_timestamp
+
+6. List the names of the test functions you will write.
+
+test_save_file
+test_read_file
+test_update_file
+
+SAVE IT
+
+oks oks2 oks 3 oks 4
+
+
+
+
+
+
+
