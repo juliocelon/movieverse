@@ -61,16 +61,24 @@ h2 {
     color: #E0E0E0;
 }
 
+/* --- ESTILO DESKTOP: SCROLL HORIZONTAL Y TAMAÑO GRANDE --- */
 .movie-cards {
     display: flex;
     gap: 20px;
-    flex-wrap: wrap;
-    padding-bottom: 10px;
+    /* Para el scroll horizontal, deshabilita el wrap */
+    flex-wrap: nowrap;
+    /* Habilita el scroll horizontal */
+    overflow-x: auto; 
+    padding-bottom: 20px; 
 }
 
 .movie-card {
-    width: 200px;
-    height: 300px;
+    /* *** TAMAÑO SOLICITADO (250x375) *** */
+    width: 350px;
+    height: 475px;
+    /* Evita que se encoja cuando hay scroll horizontal */
+    flex-shrink: 0;
+
     background-color: #444;
     border-radius: 10px;
     position: relative;
@@ -91,7 +99,8 @@ h2 {
     transition: color 0.2s ease;
 }
 
-.genre-links a:hover {
+.genre-links a:hover,
+.genre-links a.active {
     color: #007bff;
 }
 
@@ -100,16 +109,25 @@ h2 {
     gap: 15px;
 }
 
+/* --- ESTILO MÓVIL: APILAMIENTO EN COLUMNA (max-width: 768px) --- */
 @media (max-width: 768px) {
     .movie-cards {
+        /* Fuerza la columna y el apilamiento (revierte el scroll horizontal) */
         flex-direction: column;
         align-items: center;
+        /* Vuelve al comportamiento normal de overflow */
+        overflow-x: hidden; 
+        /* Permite que los elementos se envuelvan si fuera necesario */
+        flex-wrap: wrap; 
     }
 
     .movie-card {
+        /* Ajusta el ancho al 90% del contenedor para que sea fluido */
         width: 90%;
+        /* Limita el tamaño para que no sean demasiado grandes en tablets */
         max-width: 400px;
-        height: 250px;
+        /* Altura fija (se puede cambiar a 'auto' si se usa 'aspect-ratio') */
+        height: 250px; 
         margin-bottom: 20px;
     }
 
@@ -121,9 +139,10 @@ h2 {
 
 @media (max-width: 480px) {
     .movie-card {
-        width: 100%;
+        /* Asegura que el width sea fluido en el móvil más pequeño */
+        width: 90%;
         max-width: none;
-        height: auto;
+        height: auto; /* Dejamos la altura en 'auto' para que se ajuste si es necesario */
     }
 
     .search-bar {
@@ -139,4 +158,30 @@ h2 {
     100% {
         background-color: #2E2E2E;
     }
+}
+
+/* --- FOOTER STYLES (Nuevos estilos) --- */
+footer {
+    background-color: #121212; /* Fondo oscuro similar al header */
+    color: #999999; /* Texto gris claro */
+    padding: 20px 0;
+    text-align: center;
+    border-top: 1px solid #333333;
+    margin-top: 40px;
+}
+
+.footer-content p {
+    font-size: 18px; /* Tamaño de fuente más pequeño que el body general */
+    margin: 5px 0;
+    font-weight: 300;
+}
+
+.footer-content a {
+    color: #007bff; /* Color de enlace que ya usas */
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+.footer-content a:hover {
+    color: #4CAF50; /* Un color diferente al pasar el ratón */
 }
