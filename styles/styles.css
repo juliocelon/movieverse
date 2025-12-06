@@ -6,13 +6,12 @@
 
 body {
     font-family: 'Roboto', sans-serif;
-    background-color: #2E2E2E;
+    background-color: #121212;
     padding: 20px;
     width: 100%;
     font-size: 25px;
     font-weight: 300;
     color: #E0E0E0;
-    animation: fadeInBackground 1.5s ease-out;
 }
 
 .container {
@@ -24,7 +23,7 @@ header {
     display: flex;
     align-items: center;
     margin-bottom: 40px;
-    background-color: #121212;
+    background-color: #141731;
     padding: 20px;
     border-radius: 10px;
 }
@@ -61,33 +60,25 @@ h2 {
     color: #E0E0E0;
 }
 
-/* --- ESTILO DESKTOP: SCROLL HORIZONTAL Y TAMAÑO GRANDE --- */
 .movie-cards {
     display: flex;
     gap: 20px;
-    /* Para el scroll horizontal, deshabilita el wrap */
     flex-wrap: nowrap;
-    /* Habilita el scroll horizontal */
-    overflow-x: auto; 
-    padding-bottom: 20px; 
+    overflow-x: auto;
+    padding-bottom: 20px;
 }
 
 .movie-card {
-    /* *** TAMAÑO SOLICITADO (250x375) *** */
     width: 350px;
     height: 475px;
-    /* Evita que se encoja cuando hay scroll horizontal */
     flex-shrink: 0;
-
     background-color: #444;
     border-radius: 10px;
     position: relative;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .movie-card:hover {
     transform: scale(1.05);
-    box-shadow: 0 10px 20px rgba(0, 123, 255, 0.5);
 }
 
 .genre-links a {
@@ -96,7 +87,6 @@ h2 {
     color: #E0E0E0;
     font-size: 25px;
     font-weight: 600;
-    transition: color 0.2s ease;
 }
 
 .genre-links a:hover,
@@ -109,25 +99,18 @@ h2 {
     gap: 15px;
 }
 
-/* --- ESTILO MÓVIL: APILAMIENTO EN COLUMNA (max-width: 768px) --- */
 @media (max-width: 768px) {
     .movie-cards {
-        /* Fuerza la columna y el apilamiento (revierte el scroll horizontal) */
         flex-direction: column;
         align-items: center;
-        /* Vuelve al comportamiento normal de overflow */
-        overflow-x: hidden; 
-        /* Permite que los elementos se envuelvan si fuera necesario */
-        flex-wrap: wrap; 
+        overflow-x: hidden;
+        flex-wrap: wrap;
     }
 
     .movie-card {
-        /* Ajusta el ancho al 90% del contenedor para que sea fluido */
         width: 90%;
-        /* Limita el tamaño para que no sean demasiado grandes en tablets */
         max-width: 400px;
-        /* Altura fija (se puede cambiar a 'auto' si se usa 'aspect-ratio') */
-        height: 250px; 
+        height: 250px;
         margin-bottom: 20px;
     }
 
@@ -139,10 +122,9 @@ h2 {
 
 @media (max-width: 480px) {
     .movie-card {
-        /* Asegura que el width sea fluido en el móvil más pequeño */
         width: 90%;
         max-width: none;
-        height: auto; /* Dejamos la altura en 'auto' para que se ajuste si es necesario */
+        height: auto;
     }
 
     .search-bar {
@@ -151,19 +133,9 @@ h2 {
     }
 }
 
-@keyframes fadeInBackground {
-    0% {
-        background-color: #121212;
-    }
-    100% {
-        background-color: #2E2E2E;
-    }
-}
-
-/* --- FOOTER STYLES (Nuevos estilos) --- */
 footer {
-    background-color: #121212; /* Fondo oscuro similar al header */
-    color: #999999; /* Texto gris claro */
+    background-color: #121212;
+    color: #999999;
     padding: 20px 0;
     text-align: center;
     border-top: 1px solid #333333;
@@ -171,17 +143,89 @@ footer {
 }
 
 .footer-content p {
-    font-size: 18px; /* Tamaño de fuente más pequeño que el body general */
+    font-size: 18px;
     margin: 5px 0;
     font-weight: 300;
 }
 
 .footer-content a {
-    color: #007bff; /* Color de enlace que ya usas */
+    color: #007bff;
     text-decoration: none;
-    transition: color 0.2s;
 }
 
 .footer-content a:hover {
-    color: #4CAF50; /* Un color diferente al pasar el ratón */
+    color: #4CAF50;
+}
+
+.search-container {
+    position: relative;
+    width: auto;
+    flex-grow: 1;
+    max-width: 600px;
+}
+
+.search-bar {
+    width: 100%;
+    padding: 12px 15px;
+    font-size: 18px;
+    border-radius: 25px;
+    border: 2px solid #007bff;
+    margin-left: 0;
+    font-weight: 300;
+    color: #E0E0E0;
+    background-color: #333;
+}
+
+.search-bar:focus {
+    border-color: #4CAF50;
+    outline: none;
+}
+
+.search-results {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    max-height: 300px;
+    overflow-y: auto;
+    background-color: #333;
+    border: 1px solid #007bff;
+    border-top: none;
+    border-radius: 0 0 10px 10px;
+    z-index: 1000;
+    display: none;
+    padding: 0;
+}
+
+.search-result-item {
+    display: block;
+    padding: 10px 15px;
+    text-decoration: none;
+    color: #E0E0E0;
+    font-size: 16px;
+    border-bottom: 1px solid #444;
+}
+
+.search-result-item:hover {
+    background-color: #007bff;
+    color: #E0E0E0;
+}
+
+.loading-results, .no-results, .error-results {
+    padding: 10px 15px;
+    color: #ccc;
+    font-style: italic;
+    font-size: 16px;
+}
+
+@media (max-width: 768px) {
+    .search-bar {
+        width: 100%;
+        margin-left: 0;
+    }
+
+    .search-container {
+        width: 100%;
+        max-width: none;
+    }
 }

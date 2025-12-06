@@ -6,12 +6,17 @@
     <title>MovieVerse - Movie Title</title>
     <link rel="stylesheet" href="./styles/detail-styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;600&display=swap" rel="stylesheet">
+
+
+        <script src="./scripts/details/main.mjs" type="module" defer></script>
 </head>
 <body>
     <div class="container">
         <header class="detail-header">
             <a href="index.html" class="back-button">&lt; Back</a>
-            <div class="logo-placeholder">Movieverse (logo)</div>
+            <div class="logo-placeholder">
+                <img src="./images/logo2.png" alt="Movieverse Logo">
+            </div>
         </header>
 
         <section class="movie-details">
@@ -23,6 +28,7 @@
                     <span class="genre">Genre(s)</span>
                     <span class="release-date">Release Date</span>
                 </div>
+                <button class="favorite-button">❤️ Add to Favorites</button>
                 <h3 class="overview-title">Overview:</h3>
                 <p class="overview-text">
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla
@@ -38,18 +44,15 @@
             <div class="trailer-placeholder"></div>
         </section>
 
-        <section class="comments-section">
-            <h2>Comments</h2>
-            <div class="comment">
-                <span class="username">Username:</span> "Lorem ipsum dolor sit amet, consectetur adipiscing"
-            </div>
-            <div class="comment">
-                <span class="username">Username:</span> "elit. Nulla quam velit, vulputate eu pharetra nec"
-            </div>
-            <div class="comment">
-                <span class="username">Username:</span> "mattis ac neque. Duis vulputate commodo lectus"
-            </div>
-        </section>
+<section class="comments-section">
+    <h2>Comments</h2>
+    <form id="comment-form" class="comment-form">
+        <textarea id="comment-text" placeholder="Write your comment here..." required></textarea>
+        <button type="submit">Post Comment</button>
+    </form>
+    <div class="reviews-container">
+        </div>
+</section>
     </div>
 </body>
 </html>
