@@ -8,6 +8,6 @@ export const LANGUAGE = "en-US";
 export const YOUTUBE_API_KEY = "AIzaSyDNF0G3pkLFMdxDhPl81ZY9D1gLEbgYpk0"; 
 export const YOUTUBE_BASE_URL = "https://www.googleapis.com/youtube/v3/search";
 
-const key = import.meta.env.VITE_YOUTUBE_API_KEY;
-
-console.log('Mi Key:', key);
+//const key = import.meta.env.VITE_YOUTUBE_API_KEY;
+export const YT_KEY = import.meta.env.VITE_YOUTUBE_API_KEY;
+console.log('Mi Key:', YT_KEY);
