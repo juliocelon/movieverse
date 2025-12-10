@@ -1,4 +1,4 @@
-// La clave secreta SÍ es accesible aquí porque es código de servidor (serverless)
+// jcca La clave secreta SÍ es accesible aquí porque es código de servidor (serverless)
 const API_KEY = process.env.YOUTUBE_API_KEY;
 // const stripe = require('stripe')(API_KEY); // Ejemplo usando una librería
 
