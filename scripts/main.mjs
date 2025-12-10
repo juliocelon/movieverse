@@ -25,7 +25,7 @@ document.addEventListener('DOMContentLoaded', () => {
 async function obtenerDatosSeguros() {
     // Llama al endpoint generado por Netlify para tu función
     console.log('EMPEZANDO');
-  const response = await fetch('..netlify/functions/get-api-key.js');
+  const response = await fetch('../netlify/functions/get-api-key.js');
   console.log('AQUI');
   if (!response.ok) {
     throw new Error('Error al llamar a la función segura');
