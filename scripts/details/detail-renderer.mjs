@@ -1,4 +1,4 @@
-import { loadMovieDetail } from './tmdb-api.mjs';
+import { loadMovieDetail, loadMovieTrailerVideo } from './tmdb-api.mjs'; // <-- Importa loadMovieTrailerVideo
 import { getTrailerFromYouTube } from './youtube-api.mjs';
 import { formatRuntime } from './utils.mjs';
 import { refreshComments, saveLocalComment, initializeFavoriteButton } from './local-storage.mjs';
@@ -40,13 +40,15 @@ function displayMovieDetails(movie, youtubeVideoId) {
     // Trailer
     const trailerPlaceholder = document.querySelector('.trailer-placeholder');
     if (youtubeVideoId) { 
-        const youtubeEmbedUrl = `https://www.youtube.com/embed/${youtubeVideoId}`;
+        // Usamos una URL de embed de YouTube estándar
+        const youtubeEmbedUrl = `https://www.youtube.com/embed/${youtubeVideoId}?autoplay=0&controls=1`;
         trailerPlaceholder.innerHTML = `
-            <iframe width="100%" height="100%" 
+            <iframe width="100%" height="400" 
                     src="${youtubeEmbedUrl}" 
                     frameborder="0" 
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                    allowfullscreen>
+                    allowfullscreen
+                    title="Movie Trailer">
             </iframe>
         `;
     } else
@@ -83,9 +85,17 @@ export async function loadMovieDetails() {
 
     try {
         const movie = await loadMovieDetail(movieId);
+        let youtubeVideoId = null;
 
-        const youtubeVideoId = await getTrailerFromYouTube(movie.title);
+        // 1. Intenta obtener el trailer con la API de YouTube (búsqueda)
+        youtubeVideoId = await getTrailerFromYouTube(movie.title);
 
+        if (!youtubeVideoId) {
+            // 2. Si falla la búsqueda de YouTube, intenta obtener el trailer con TMDB API (videos)
+            console.warn("YouTube API failed or found no results. Falling back to TMDB videos endpoint.");
+            youtubeVideoId = await loadMovieTrailerVideo(movieId);
+        }
+        
         displayMovieDetails(movie, youtubeVideoId);
         
         await refreshComments(movieId); 

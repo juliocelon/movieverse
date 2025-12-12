@@ -1,4 +1,3 @@
-
 import { TMDB_API_KEY, TMDB_BASE_URL, LANGUAGE } from '../config.mjs';
 
 export async function loadMovieDetail(movieId) {
@@ -10,6 +9,38 @@ export async function loadMovieDetail(movieId) {
     }
     return detailResponse.json();
 }
+
+/**
+ * Carga el video del trailer de YouTube para una película desde TMDB (Endpoint /videos).
+ * @param {number} movieId - El ID de la película.
+ * @returns {Promise<string|null>} El ID del video de YouTube o null si no se encuentra.
+ */
+export async function loadMovieTrailerVideo(movieId) {
+    const videosUrl = `${TMDB_BASE_URL}/movie/${movieId}/videos?api_key=${TMDB_API_KEY}&language=${LANGUAGE}`;
+
+    try {
+        const response = await fetch(videosUrl);
+        if (!response.ok) {
+            throw new Error(`TMDB Videos HTTP error! status: ${response.status}`);
+        }
+
+        const data = await response.json();
+
+        // Buscar el primer video que sea de tipo 'Trailer' o 'Teaser' y esté en YouTube.
+        const trailer = data.results.find(video =>
+            video.site === 'YouTube' &&
+            (video.type === 'Trailer' || video.type === 'Teaser')
+        );
+
+        // Retorna la clave del video de YouTube (el ID)
+        return trailer ? trailer.key : null;
+
+    } catch (error) {
+        console.error("Error loading movie trailer from TMDB:", error);
+        return null;
+    }
+}
+
 
 export async function loadMovieReviews(movieId) {
     const reviewsUrl = `${TMDB_BASE_URL}/movie/${movieId}/reviews?api_key=${TMDB_API_KEY}&language=${LANGUAGE}`;
