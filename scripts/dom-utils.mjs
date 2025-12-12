@@ -1,3 +1,5 @@
+// dom-utils.mjs - CORRECTED VERSION
+
 import { IMAGE_BASE_URL } from './config.mjs';
 
 export function createMovieCardHTML(movie) {
@@ -9,13 +11,16 @@ export function createMovieCardHTML(movie) {
         ? `${IMAGE_BASE_URL}${posterPath}` 
         : 'https://placehold.co/250x375/333333/ffffff?text=No+Poster';
 
+    // CHANGE: Removed inline background styles and added an <img> tag.
     return `
         <a href="movie-detail.html?id=${movieId}" 
            class="movie-card" 
-           aria-label="View details for ${movieTitle}" 
-           style="background-image: url('${posterUrl}'); 
-                  background-size: cover; 
-                  background-position: center;">
+           aria-label="View details for ${movieTitle}">
+            
+            <img src="${posterUrl}" 
+                 alt="Poster for ${movieTitle}" 
+                 class="movie-poster"> 
+                 
         </a>
     `;
 }

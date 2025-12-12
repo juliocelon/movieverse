@@ -180,6 +180,10 @@ h2 {
     scrollbar-width: thin;
 }
 
+/*
+ * Consolidated .movie-card styles for the new <img> structure.
+ * This now acts as the container for the poster.
+ */
 .movie-card {    
     height: 450px;
     background-color: var(--color-card-bg);
@@ -191,6 +195,19 @@ h2 {
     opacity: 0;
     transform: translateY(20px);
     animation: cardFadeIn 0.6s ease-out forwards;
+    /* Removed old background-image related properties */
+}
+
+/*
+ * NEW RULE: This ensures the <img> tag (poster) fills the entire 
+ * 450px height and width of the .movie-card container consistently.
+ */
+.movie-card .movie-poster {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Important: Ensures the image covers the container */
+    display: block;
+    border-radius: 12px; /* Match the container's corner radius */
 }
 
 .movie-card:nth-child(1) { animation-delay: 0.1s; }
@@ -225,6 +242,16 @@ footer {
     transition: color 0.3s ease;
 }
 
+.genre-results .movie-cards {
+    grid-template-columns: repeat(auto-fit, 325px);
+    justify-content: start;
+    justify-items: start;
+}
+
+.genre-results .movie-card {
+    width: 100%; 
+}
+
 @keyframes fadeIn {
     from {
         opacity: 0;
@@ -249,3 +276,4 @@ footer {
         transform: translateY(0);
     }
 }
+
