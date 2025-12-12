@@ -4,7 +4,7 @@
     --color-card-bg: #2C2C2C; 
     --color-text-primary: #E0E0E0; 
     --color-text-secondary: #9E9E9E; 
-    --color-accent-primary: #00AEEF; 
+    --color-accent-primary: #48d1ff; 
     --color-accent-hover: #007bff; 
     --color-success: #4CAF50; 
     --shadow-light: 0 4px 12px rgba(0, 0, 0, 0.4);
@@ -167,19 +167,7 @@ h2 {
     scrollbar-width: thin;
 }
 
-.movie-cards::-webkit-scrollbar {
-    height: 8px;
-}
 
-.movie-cards::-webkit-scrollbar-track {
-    background: var(--color-background-secondary);
-    border-radius: 10px;
-}
-
-.movie-cards::-webkit-scrollbar-thumb {
-    background: var(--color-accent-primary);
-    border-radius: 10px;
-}
 
 .movie-card {
     width: 300px; 
@@ -224,13 +212,11 @@ footer {
 
 .footer-content a {
     color: var(--color-accent-primary);
-    text-decoration: none;
+    text-decoration: underline;
     transition: color 0.3s ease;
 }
 
-.footer-content a:hover {
-    color: var(--color-success);
-}
+
 
 @media (max-width: 1024px) {
     .container {
@@ -267,20 +253,9 @@ footer {
         font-size: 28px;
     }
 
-    .movie-cards {
-        flex-wrap: wrap;
-        gap: 25px;
-        overflow-x: hidden;
-        padding-bottom: 0;
-        justify-content: center;
-    }
 
-    .movie-card {
-        width: 90%;
-        max-width: 400px;
-        height: 400px;
-        flex-shrink: 1;
-    }
+
+  
 
     .genre-links {
         gap: 15px;

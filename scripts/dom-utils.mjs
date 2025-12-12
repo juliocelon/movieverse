@@ -3,6 +3,8 @@ import { IMAGE_BASE_URL } from './config.mjs';
 export function createMovieCardHTML(movie) {
     const movieId = movie.id;
     const posterPath = movie.poster_path;
+    const movieTitle = movie.title;
+    
     const posterUrl = posterPath 
         ? `${IMAGE_BASE_URL}${posterPath}` 
         : 'https://placehold.co/250x375/333333/ffffff?text=No+Poster';
@@ -10,6 +12,7 @@ export function createMovieCardHTML(movie) {
     return `
         <a href="movie-detail.html?id=${movieId}" 
            class="movie-card" 
+           aria-label="View details for ${movieTitle}" 
            style="background-image: url('${posterUrl}'); 
                   background-size: cover; 
                   background-position: center;">
